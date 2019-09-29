@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><?php echo $msg; ?></title>
+    <link rel="stylesheet" type="text/css" href="./View/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="./View/css/done.css" />
+</head>
+<body>
+    <div class="header">
+        <div class="logo f1">
+            <a href="index.php"><img src="./View/image/logo.png"></a>
+        </div>
+        <div class="auth fr">
+            <ul>
+                <li><a href="login.php">登录</a></li>
+                <li><a href="register.php">注册</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="content">
+        <div class="center">
+            <div class="image_center">
+                <span class="smile_face">:)</span>           
+            </div>
+            <div class="code">
+                <?php echo $msg; ?>
+            </div>
+            <div class="jump">
+                页面在 <strong id="time" style="color: #009f95">3</strong> 秒 后 <a href="<?php echo $url; ?>" class="jump">跳转</a>
+            </div>
+        </div>
+        
+    </div>
+    <div class="footer">
+        <p><span>M-GALLARY</span>©2018 powered by painting.hjn.ink</p>
+    </div>
+</body>
+<script src="./View/js/jquery-1.10.2.min.js"></script>
+<script>
+    $(function () {
+        var time = 3;
+        var url = '<?php echo $url; ?>';
+        setInterval(function () {
+            if (time > 1){
+                time --;
+                console.log(time);
+                $('#time').html(time);
+            }else {
+                $('#time').html(0);
+                if (url){
+                    location.href = url;
+                }else {
+                    history.go(-1);
+                }
+            }
+        },1000);
+    })
+</script>
+</html>

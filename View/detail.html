@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title><?php echo $name; ?></title>
+    <link rel="stylesheet" type="text/css" href="./View/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="./View/css/detail.css" />
+<!--<link rel="stylesheet" type="text/css" href="css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="css/css.css" />-->
+</head>
+<body class="bgf8">
+    <div class="header">
+        <div class="logo f1">
+            <a href="index.php"><img src="./View/image/logo.png"></a>
+        </div>
+        <div class="auth fr">
+            <ul>
+                <?php if($login): ?>
+                    <li><span>欢迎回来：<?php echo $user; ?></span></li>
+                    <li><a href="add.php">发布</a></li>
+                    <li><a href="login_out.php">退出</a></li>
+                    <li><a href="edit.php?id=<?php echo $row['id'] ?>">编辑</a></li>
+                    <li><a href="delete.php?id=<?php echo $row['id'] ?>">删除</a></li>
+                <?php else: ?>
+                    <li><a href="login.php">登陆</a></li>
+                    <li><a href="register.php">注册</a></li>
+                <?php endif; ?>
+            </ul>
+        </div>
+    </div>
+    <div class="content">
+        <div class="section" style="margin-top:20px;">
+            <div class="width1200">
+                <div class="fl"><img src="<?php echo config('domain').$img; ?>" width="720px" height="432px"/></div>
+                <div class="fl sec_intru_bg">
+                    <dl>
+                        <dt><?php echo $name; ?></dt>
+                        <dd>
+                            <p>发布人：<span><?php echo $username; ?></span></p>
+                            <p>发布时间：<span><?php echo $create_time; ?></span></p>
+                            <p>修改时间：<span><?php echo $update_time; ?></span></p>
+                            <p>浏览次数：<span><?php echo $page_view; ?></span></p>
+                        </dd>
+                    </dl>
+                    <ul>
+                        <li>售价：<br/><span class="price"><?php echo $price; ?></span>元</li>
+                        <li class="btn"><a href="javascript:;" class="btn btn-bg-red" style="margin-left:38px;">立即购买</a></li>
+                        <li class="btn"><a href="javascript:;" class="btn btn-sm-white" style="margin-left:8px;">收藏</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="secion_words">
+            <div class="width1200">
+                <div class="secion_wordsCon">
+                    <?php echo $content; ?>
+                </div>
+            </div>
+        </div>
+        </div>
+    <div class="footer">
+        <p><span>M-GALLARY</span>©2018 powered by painting.hjn.ink</p>
+    </div>
+    </div>
+</body>
+</html>

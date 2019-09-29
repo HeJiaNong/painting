@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="stylesheet" type="text/css" href="./View/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="./View/css/index.css" />
+</head>
+<body>
+    <div class="header">
+        <div class="logo f1">
+            <a href="index.php"><img src="./View/image/logo.png"></a>
+        </div>
+        <div class="auth fr">
+            <ul>
+                <?php if($login): ?>
+                    <li><span>欢迎回来：<?php echo $user; ?></span></li>
+                    <li><a href="add.php">发布</a></li>
+                    <li><a href="login_out.php">退出</a></li>
+                <?php else: ?>
+                    <li><a href="login.php">登陆</a></li>
+                    <li><a href="register.php">注册</a></li>
+                <?php endif; ?>
+            </ul>
+        </div>
+    </div>
+    <div class="content">
+        <div class="banner">
+            <img class="banner-img" src="./View/image/welcome.png" width="732px" height="372" alt="图片描述">
+        </div>
+
+        <div class="img-content">
+            <ul>
+                <?php if($row){ ?>
+                    <?php foreach($row as $v): ?>
+                        <li>
+                            <a class="img-li-fix" href="<?php echo 'detail.php?id='.$v['id']; ?>">
+                                <img class="img-li-fix" src="<?php echo config('domain').$v['img']; ?>" alt="<?php echo $v['name']; ?>">
+                            </a>
+
+                            <div class="info">
+                                <a style=" text-decoration:none" href="<?php echo 'detail.php?id='.$v['id']; ?>" >
+                                    <h3 class="img_title"><?php echo $v['name']; ?></h3>
+                                </a>
+                                <p>
+                                    <?php echo $v['desc']; ?>
+                                </p>
+                                <div class="btn" data-article-id="<?php echo $v['id']; ?>">
+                                </div>
+                            </div>
+                        </li>
+                    <?php endforeach; ?>
+                <?php }else{ ?>
+                    ): 暂无数据~
+                <?php } ?>
+
+            </ul>
+        </div>
+            <?php echo $page;?>
+    </div>
+
+    <div class="footer">
+        <p><span>M-GALLARY</span>©2018 powered by painting.hjn.ink</p>
+    </div>
+</body>
+
+<script src="./View/js/jquery-1.10.2.min.js"></script>
+<script>
+    $(function () {
+        $('.del').on('click',function () {
+            if (confirm('确认删除该画品吗?')){
+                window.location = $(this).attr('href');
+            }
+            return false;
+        })
+    })
+</script>
+
+</html>
